@@ -13,7 +13,7 @@
 ```bash
 # Grab the code
 git clone https://github.com/Parag09/GoDaddyAssignment.git
-cd godaddy-repos-explorer
+cd GoDaddyAssignment
 
 # Install the good stuff
 npm install
