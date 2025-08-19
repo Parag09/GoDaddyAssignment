@@ -38,3 +38,26 @@ global.testUtils = {
     owner: { login: 'godaddy' }
   }
 };
+
+
+// Spy once, globally
+const warnSpy = jest.spyOn(console, "warn").mockImplementation((msg, ...args) => {
+    if (typeof msg === "string" && msg.includes("React Router Future Flag Warning")) {
+      return; // ignore only this warning
+    }
+    // still print others
+    console.warn(msg, ...args);
+  });
+  
+  const errorSpy = jest.spyOn(console, "error").mockImplementation((msg, ...args) => {
+    if (msg instanceof Error && msg.message.includes("API Error")) {
+      return; // ignore API Error logs
+    }
+    console.error(msg, ...args);
+  });
+  
+  // Restore spies after all tests
+  afterAll(() => {
+    warnSpy.mockRestore();
+    errorSpy.mockRestore();
+  });

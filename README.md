@@ -13,6 +13,8 @@
 ```bash
 # Grab the code
 git clone https://github.com/Parag09/GoDaddyAssignment.git
+
+# Go inside the directory
 cd GoDaddyAssignment
 
 # Install the good stuff
@@ -30,7 +32,8 @@ I've included some tests because nobody likes broken code:
 
 ```bash
 # Run the test suite
-npm test
+# press a to run the tests.
+npm test      
 
 # See how much code is actually tested
 npm run test:coverage
