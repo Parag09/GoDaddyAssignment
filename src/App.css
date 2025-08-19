@@ -5,6 +5,15 @@ body {
   padding: 0;
 }
 
+/* React Virtualized styles */
+.ReactVirtualized__List {
+  outline: none;
+}
+
+.ReactVirtualized__List:focus {
+  outline: none;
+}
+
 .app {
   min-height: 100vh;
 }
