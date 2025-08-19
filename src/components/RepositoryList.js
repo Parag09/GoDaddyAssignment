@@ -6,7 +6,7 @@ import RepositoryCard from '../components/RepositoryCard';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorMessage from '../components/ErrorMessage';
 import 'react-virtualized/styles.css';
-import './RepositoryList.css';
+import '../css/RepositoryList.css';
 
 // Create a cache so each row can have dynamic height
 const cache = new CellMeasurerCache({

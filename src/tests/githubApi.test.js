@@ -1,4 +1,4 @@
-import { githubApi } from './githubApi';
+import { githubApi } from '../services/githubApi';
 
 // Mock fetch globally
 global.fetch = jest.fn();

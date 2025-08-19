@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { MemoryRouter, Routes, Route } from 'react-router-dom';
-import RepositoryDetails from './RepositoryDetails';
+import RepositoryDetails from '../components/RepositoryDetails';
 import { githubApi } from '../services/githubApi';
 
 jest.mock('../services/githubApi');

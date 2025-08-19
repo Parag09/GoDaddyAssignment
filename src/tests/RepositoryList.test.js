@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from '@testing-library/react';
 import { BrowserRouter } from 'react-router-dom';
-import RepositoryList from './RepositoryList';
+import RepositoryList from '../components/RepositoryList';
 import { githubApi } from '../services/githubApi';
 
 // ✅ Mock react-virtualized

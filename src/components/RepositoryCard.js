@@ -1,6 +1,6 @@
 import React from 'react';
 import { formatDate } from '../utils';
-import './RepositoryCard.css';  // 👈 import CSS
+import '../css/RepositoryCard.css'; 
 
 const RepositoryCard = React.memo(function RepositoryCard({ repository, onClick }) {
   return (

@@ -4,7 +4,13 @@
 
 ## What This Does
 
- This app fetches all their public repositories and presents them in a way that doesn't make your eyes bleed. You get a nice list view, detailed pages for each repo, and it's fast enough that you won't fall asleep waiting for it to load.
+This app fetches all GoDaddy public repositories and presents them in a way that doesn’t make your eyes bleed:
+
+Fast list view using virtualization
+
+Detailed pages for each repo
+
+Responsive design (looks good on mobile too!)
 
 ## Getting Started
 
@@ -53,7 +59,7 @@ This will give a `build/` folder that you can throw at any static host.
 - **React Router v6** for navigation  
 - **React Virtualized** for efficient list rendering  
 - **Jest + React Testing Library** for testing  
-- **CSS3** for styling  
+- **CSS3 + Media Queries for responsive design
 - **GitHub REST API** as backend  
 
 ---
@@ -73,17 +79,26 @@ This will give a `build/` folder that you can throw at any static host.
 
 ```
 src/
-├── components/          # The building blocks
-│   ├── RepositoryCard.js      # Individual repo cards
-│   ├── RepositoryList.js      # The main list view
-│   ├── RepositoryDetails.js   # Detailed repo pages
-│   ├── LoadingSpinner.js      # Pretty loading animation
-│   └── ErrorMessage.js        # Friendly error messages
+├── components/               
+│   ├── RepositoryCard.js       # Individual repo cards
+│   ├── RepositoryList.js       # The main list view
+│   ├── RepositoryDetails.js    # Detailed repo pages
+│   ├── LoadingSpinner.js       # Pretty loading animation
+│   └── ErrorMessage.js         # Friendly error messages
 ├── services/
-│   └── githubApi.js     # All the API magic
-├── App.js               # The main show
-├── App.css              # Making it pretty
-└── index.js             # React entry point
+│   └── githubApi.js            # All the API magic
+├── utils/
+│   └── index.js           # Helper functions (e.g., date formatting, string truncation)
+├── tests/
+│   ├── RepositoryCard.test.js  # Unit tests for repo cards
+│   ├── RepositoryList.test.js  # Unit tests for list view
+|   |── RepositoryDetails.test.js 
+├── css/
+│   ├── RepositoryCard.css                 # Base styling
+│   └── RepositoryList.css
+|   └── RepositoryDetails.css   # Component-specific styles
+├── App.js                      # The main show
+└── index.js                    # React entry point
 ```
 
 ## My Thought Process
@@ -117,3 +132,4 @@ If I ever get bored again, I might add:
 - Star/fork counts with pretty charts
 - Repository comparison feature
 - Better mobile navigation
+- Custom useFetcher hook for reusable and cleaner data fetching logic 🆕 (planned, not implemented yet)

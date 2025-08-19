@@ -4,7 +4,7 @@ import { githubApi } from '../services/githubApi';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorMessage from '../components/ErrorMessage';
 import { formatDate } from '../utils';
-import './RepositoryDetails.css'; // 👈 import CSS
+import '../css/RepositoryDetails.css'; // 👈 import CSS
 
 function RepositoryDetails() {
   const { owner, name } = useParams();

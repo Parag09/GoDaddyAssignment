@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import RepositoryCard from './RepositoryCard';
+import RepositoryCard from '../components/RepositoryCard';
 
 const mockRepo = {
   id: 1,
