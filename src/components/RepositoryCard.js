@@ -1,14 +1,8 @@
 import React from 'react';
+import { formatDate } from '../utils';
+import './RepositoryCard.css';  // 👈 import CSS
 
 const RepositoryCard = React.memo(function RepositoryCard({ repository, onClick }) {
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleDateString('en-US', {
-      month: 'short',
-      day: 'numeric',
-      year: 'numeric'
-    });
-  };
-
   return (
     <div className="repo-card" onClick={onClick}>
       <h3>{repository.name}</h3>
@@ -40,11 +34,8 @@ const RepositoryCard = React.memo(function RepositoryCard({ repository, onClick 
         </div>
       </div>
 
-      <div style={{ 
-        marginTop: '1rem', 
-        fontSize: '0.75rem', 
-        color: '#a0aec0' 
-      }}>
+      {/* ✅ replaced inline style with class */}
+      <div className="repo-updated">
         Updated {formatDate(repository.updated_at)}
       </div>
     </div>

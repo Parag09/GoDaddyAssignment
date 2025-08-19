@@ -1,0 +1,105 @@
+.back-btn {
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+  }
+  
+  .repo-details {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+  
+  .repo-title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+    color: #2d3748;
+  }
+  
+  .repo-description {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    color: #4a5568;
+  }
+  
+  .repo-link {
+    display: inline-block;
+    margin-bottom: 1.5rem;
+    color: #3182ce;
+    text-decoration: none;
+  }
+  
+  .repo-link:hover {
+    text-decoration: underline;
+  }
+  
+  .repo-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .stat-card {
+    flex: 1 1 120px;
+    background: #f7fafc;
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+  }
+  
+  .stat-number {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #2d3748;
+  }
+  
+  .stat-label {
+    font-size: 0.85rem;
+    color: #718096;
+  }
+  
+  .repo-additional-info {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: #f7fafc;
+    border-radius: 8px;
+  }
+  
+  .repo-additional-title {
+    margin-bottom: 1rem;
+    color: #2d3748;
+    font-size: 1.2rem;
+  }
+  
+  .repo-additional-grid {
+    display: grid;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  /* 📱 Mobile tweaks */
+  @media (max-width: 768px) {
+    .repo-title {
+      font-size: 1.5rem;
+    }
+  
+    .repo-description {
+      font-size: 0.9rem;
+    }
+  
+    .repo-additional-grid {
+      grid-template-columns: 1fr;
+    }
+  
+    .repo-stats {
+      flex-direction: column;
+    }
+  
+    .stat-card {
+      width: 100%;
+    }
+  }
+  

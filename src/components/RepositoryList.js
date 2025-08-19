@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { List, AutoSizer } from 'react-virtualized';
+import { List, AutoSizer, CellMeasurer, CellMeasurerCache } from 'react-virtualized';
 import { githubApi } from '../services/githubApi';
 import RepositoryCard from '../components/RepositoryCard';
 import LoadingSpinner from '../components/LoadingSpinner';
 import ErrorMessage from '../components/ErrorMessage';
 import 'react-virtualized/styles.css';
+import './RepositoryList.css';
+
+// Create a cache so each row can have dynamic height
+const cache = new CellMeasurerCache({
+  fixedWidth: true,
+  defaultHeight: 220, // fallback if not measured yet
+});
 
 function RepositoryList() {
   const [repositories, setRepositories] = useState([]);
@@ -23,6 +30,7 @@ function RepositoryList() {
       setError(null);
       const repos = await githubApi.getGoDaddyRepos();
       setRepositories(repos);
+      cache.clearAll(); // clear cache when data changes
     } catch (err) {
       setError('Failed to fetch repositories. Please try again.');
       console.error(err);
@@ -35,55 +43,57 @@ function RepositoryList() {
     navigate(`/repo/${repo.owner.login}/${repo.name}`);
   };
 
-  // Virtualized list row renderer
-  const rowRenderer = ({ index, key, style }) => {
+  // Virtualized list row renderer with CellMeasurer
+  const rowRenderer = ({ index, key, parent, style }) => {
     const repo = repositories[index];
     return (
-      <div key={key} style={style}>
-        <div style={{ padding: '0.5rem' }}>
-          <RepositoryCard
-            repository={repo}
-            onClick={() => handleRepositoryClick(repo)}
-          />
-        </div>
-      </div>
+      <CellMeasurer
+        key={key}
+        cache={cache}
+        columnIndex={0}
+        rowIndex={index}
+        parent={parent}
+      >
+        {() => (
+          <div style={style}>
+            <div className="virtualized-row-padding">
+              <RepositoryCard
+                repository={repo}
+                onClick={() => handleRepositoryClick(repo)}
+              />
+            </div>
+          </div>
+        )}
+      </CellMeasurer>
     );
   };
 
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-
-  if (error) {
-    return (
-      <ErrorMessage 
-        message={error}
-        onRetry={fetchRepositories}
-      />
-    );
-  }
+  if (loading) return <LoadingSpinner />;
+  if (error) return <ErrorMessage message={error} onRetry={fetchRepositories} />;
 
   return (
     <div>
-      <div style={{ marginBottom: '1rem', textAlign: 'center' }}>
-        <h2 style={{ color: '#2d3748', fontSize: '1.5rem', marginBottom: '0.5rem' }}>
+      <div className="repository-list-header">
+        <h2 className="repository-list-title">
           {repositories.length} Repositories Found
         </h2>
-        <p style={{ color: '#718096' }}>
+        <p className="repository-list-subtitle">
           Click on any repository to view detailed information
         </p>
       </div>
 
       {/* Virtualized list for better performance with large datasets */}
-      <div style={{ height: '600px', width: '100%' }}>
+      <div className="virtualized-list-container">
         <AutoSizer>
           {({ height, width }) => (
             <List
               height={height}
               width={width}
               rowCount={repositories.length}
-              rowHeight={200}
+              rowHeight={cache.rowHeight}   // ✅ dynamic height
+              deferredMeasurementCache={cache}
               rowRenderer={rowRenderer}
+              overscanRowCount={5}
             />
           )}
         </AutoSizer>

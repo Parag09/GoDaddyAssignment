@@ -1,0 +1,64 @@
+.repository-list-header {
+    margin-bottom: 1rem;
+    text-align: center;
+    padding: 0 1rem;
+  }
+  
+  .repository-list-title {
+    color: #2d3748;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+    overflow-wrap: anywhere;
+  }
+  
+  .repository-list-subtitle {
+    color: #718096;
+    font-size: 1rem;
+  }
+  
+  .virtualized-row-padding {
+    padding: 0.5rem;
+  }
+  
+  /* 👇 Add consistent spacing between cards */
+  .virtualized-row-padding > .repo-card {
+    margin-bottom: 1rem;
+  }
+  
+  .virtualized-list-container {
+    height: 600px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* 📱 Mobile tweaks */
+  @media (max-width: 768px) {
+    .repository-list-title {
+      font-size: 1.25rem;
+    }
+  
+    .repository-list-subtitle {
+      font-size: 0.85rem;
+    }
+  
+    .virtualized-list-container {
+      height: 400px;
+    }
+  
+    .virtualized-row-padding > .repo-card {
+      margin-bottom: 1.25rem; /* extra breathing room on mobile */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .repository-list-title {
+      font-size: 1.1rem;
+    }
+  
+    .repository-list-subtitle {
+      font-size: 0.8rem;
+    }
+  }
+  
