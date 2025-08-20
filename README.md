@@ -6,7 +6,7 @@
 
 This app fetches all GoDaddy public repositories and presents them in a way that doesn’t make your eyes bleed:
 
-Fast list view using virtualization
+Fast list view using virtualization and code splitting.
 
 Detailed pages for each repo
 
